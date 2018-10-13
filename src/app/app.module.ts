@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
-import {MapdetailserviceService} from '../service/mapdetailservice.service';
+
 import { MapComponent } from './map/map.component';
 
 
@@ -17,7 +17,7 @@ import { MapComponent } from './map/map.component';
   imports: [
     BrowserModule,
   ],
-  providers: [MapdetailserviceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

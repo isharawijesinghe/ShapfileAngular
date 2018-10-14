@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-declare let L;
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
+declare let L;
+
+
 
 @Component({
 	selector: 'app-map',
 	templateUrl: './map.component.html',
 	styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit  {
+	
+   mapObject:any;
 	private map: any;
 	private selectedCoordinates: any;
 	constructor() {
@@ -30,23 +34,22 @@ export class MapComponent implements OnInit {
 		})
 		var base = '../../assets/landslide.zip';
 		var shpfile = new L.Shapefile(base, {
-			onEachFeature: function (feature, layer) {
-
-				if (feature.properties) {
-					layer.bindPopup(Object.keys(feature.properties).map(function (k) {
-						console.log(k + ": " + feature.properties[k])
-						return k + ": " + feature.properties[k];
-					}).join("<br />"), {
-							maxHeight: 200
-						});
-				}
-
-				layer.on('click', function (e) {
-					console.log(e.target.feature.properties);
-
-				});
+			onEachFeature:(feature, layer)=> {
+				
+				// if (feature.properties) {
+				// 	layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+				// 		// console.log(k + ": " +feature.properties[k])
+				// 		return k + ": " + feature.properties[k];
+				// 	}).join("<br />"), {
+				// 		maxHeight: 200
+				// 	});
+				// }
+				layer.on('click',  (e) => {
+					this.mapObject = e.target.feature.properties;
+					});
+				
 			}
-
+				
 		});
 		shpfile.addTo(this.map);
 		shpfile.once("data:loaded", function () {

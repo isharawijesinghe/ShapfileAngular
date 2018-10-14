@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
-
 import { MapComponent } from './map/map.component';
+import { MapdetailComponent } from './map/mapdetail/mapdetail.component';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail/weather-detail.service';
@@ -16,6 +16,7 @@ import { WeatherDetailService } from './weather-detail/weather-detail.service';
     AppComponent,
     MapComponent,
     WeatherDetailComponent,
+    MapdetailComponent,
   ],
   imports: [
     BrowserModule,

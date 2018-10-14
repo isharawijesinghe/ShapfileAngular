@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
-
 import { MapComponent } from './map/map.component';
+import { MapdetailComponent } from './map/mapdetail/mapdetail.component';
 
 
 
@@ -13,6 +12,7 @@ import { MapComponent } from './map/map.component';
     AppComponent,
     MapComponent,
     WeatherDetailComponent,
+    MapdetailComponent,
   ],
   imports: [
     BrowserModule,

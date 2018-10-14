@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail.service';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../common/dialog/dialog.component';
 
 @Component({
   selector: 'app-weather-detail',
@@ -16,7 +18,8 @@ export class WeatherDetailComponent implements OnInit {
     this.patchCord(coord);
   }
   constructor(private fb: FormBuilder,
-    private weatherService: WeatherDetailService) { }
+    private weatherService: WeatherDetailService,
+    public dialog: MatDialog) { }
 
 
   weatherForm = this.fb.group({
@@ -24,9 +27,9 @@ export class WeatherDetailComponent implements OnInit {
     coordinates: [{ value: '', disabled: true }, Validators.required]
   })
 
-
   ngOnInit() {
   }
+
 
   private patchCord(coord: any) {
     this.weatherForm.patchValue({
@@ -35,16 +38,32 @@ export class WeatherDetailComponent implements OnInit {
   }
 
 
-
-
-
   onSubmit() {
+    this.openDialog();
     let options = {
       latitude: this._selected_coord.lat,
       longitude: this._selected_coord.lng
     }
     this.weatherService.getWeatherData(options)
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      height: '400px',
+      width: '600px',
+      data: {
+        title: "Attention",
+        content_msg: "you have selected a large data range.This may take time to proceed. Do you want to continue?"
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+
 
   public daterange: any = {};
 

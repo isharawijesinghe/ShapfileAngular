@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -9,6 +12,7 @@ import { MapdetailComponent } from './mapdetail/mapdetail.component';
 import { Daterangepicker } from 'ng2-daterangepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail/weather-detail.service';
+import { DialogComponent } from './common/dialog/dialog.component';
 
 
 @NgModule({
@@ -17,14 +21,19 @@ import { WeatherDetailService } from './weather-detail/weather-detail.service';
     MapComponent,
     WeatherDetailComponent,
     MapdetailComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     Daterangepicker,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
+    
   ],
   providers: [WeatherDetailService],
+  entryComponents:[DialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,9 +11,9 @@ declare let L;
 })
 export class MapComponent implements OnInit  {
 	
-   mapObject:any;
+    mapObject:any;
 	private map: any;
-	private selectedCoordinates: any;
+	selectedCoordinates: any;
 	constructor() {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251

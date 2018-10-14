@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Weather</h1>
+
+    <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
+        <label>
+            Date:
+            <input type="text" formControlName="date_range" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+        </label>
+
+        <label>
+            Coordinates:
+            <input type="text" id="coord" formControlName="coordinates" required>
+        </label>
+
+        <button type="submit" [disabled]="!weatherForm.valid">Get Data</button>
+
+    </form>
+
+</div>

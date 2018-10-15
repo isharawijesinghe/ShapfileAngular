@@ -2,10 +2,23 @@
     <h1>Weather</h1>
 
     <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
-        <label>
-            Date Range:
-            <p-calendar formControlName="date_range" dateFormat="dd.mm.yy" selectionMode="range" showIcon=true></p-calendar>
-        </label>
+
+        <p-toggleButton onLabel="Range" offLabel="Default" formControlName="isRange"></p-toggleButton>
+        <div *ngIf="isRangeData; else range">
+            <label>
+                Date Range:
+                <p-calendar formControlName="date_range" dateFormat="dd.mm.yy" selectionMode="range" showIcon=true></p-calendar>
+            </label>
+        </div>
+
+        <ng-template #range>
+            <label>
+                Date:
+                <p-calendar formControlName="date" dateFormat="dd.mm.yy" showIcon=true monthNavigator=true
+                    yearNavigator=true></p-calendar>
+            </label>
+        </ng-template>
+
 
         <label>
             Coordinates:

@@ -1,6 +1,7 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 declare let L;
+import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
 
 
@@ -10,7 +11,7 @@ declare let L;
 	styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit  {
-	
+
     mapObject:any;
 	private map: any;
 	selectedCoordinates: any;
@@ -35,7 +36,7 @@ export class MapComponent implements OnInit  {
 		var base = '../../assets/landslide.zip';
 		var shpfile = new L.Shapefile(base, {
 			onEachFeature:(feature, layer)=> {
-				
+
 				// if (feature.properties) {
 				// 	layer.bindPopup(Object.keys(feature.properties).map(function(k) {
 				// 		// console.log(k + ": " +feature.properties[k])
@@ -47,9 +48,9 @@ export class MapComponent implements OnInit  {
 				layer.on('click',  (e) => {
 					this.mapObject = e.target.feature.properties;
 					});
-				
+
 			}
-				
+
 		});
 		shpfile.addTo(this.map);
 		shpfile.once("data:loaded", function () {

@@ -1,17 +1,13 @@
- <div class="col-lg-9">
-    <div id="map" class=""></div>
-</div>
-
-<div class="col-lg-3">
-    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
-</div>
-
-
-<div class="row">
-    <div class="col-md-10">
-        <div id="map"class=""></div>
+<div class="p-grid p-dir">
+    <div class="p-col">
+        <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
     </div>
-    <app-mapdetail [mapObject]='mapObject'></app-mapdetail>
-   
-</div> 
 
+    <div class="p-col">
+        <div id="map" class=""></div>
+    </div>
+
+    <div class="p-col">
+        <app-details-sidebar></app-details-sidebar>
+    </div>
+</div>

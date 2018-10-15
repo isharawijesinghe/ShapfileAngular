@@ -1,17 +1,16 @@
- <div class="col-lg-9">
-    <div id="map" class=""></div>
+<div class="col-lg-3">
+    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
 </div>
 
 <div class="col-lg-3">
-    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
+    
+    <app-static-weather-chart></app-static-weather-chart>
 </div>
 
 
 <div class="row">
     <div class="col-md-10">
-        <div id="map"class=""></div>
+        <div id="map" class=""></div>
     </div>
     <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
-   
-</div> 
-
+</div>

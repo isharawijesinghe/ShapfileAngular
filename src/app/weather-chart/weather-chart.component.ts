@@ -1,21 +1,20 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { element } from 'protractor';
-import { range } from 'rxjs';
 
 @Component({
   selector: 'app-weather-chart',
   templateUrl: './weather-chart.component.html',
   styleUrls: ['./weather-chart.component.css']
 })
+
 export class WeatherChartComponent implements OnInit {
   chartData: any;
   private weatherData: any[];
   private dates: any[];
   selectionMode: any[];
-  isRange: boolean
+  isRange: boolean;
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.isRange = this.data.isRange;
 
@@ -39,8 +38,6 @@ export class WeatherChartComponent implements OnInit {
     //     }
     //   ]
     // }
-
-
   }
 
   ngOnInit() {

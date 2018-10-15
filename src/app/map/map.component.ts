@@ -9,9 +9,9 @@ declare let L;
 	templateUrl: './map.component.html',
 	styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit  {
-	
-    mapObject:any;
+export class MapComponent implements OnInit {
+
+	mapObject: any;
 	private map: any;
 	selectedCoordinates: any;
 	constructor() {
@@ -34,8 +34,8 @@ export class MapComponent implements OnInit  {
 		})
 		var base = '../../assets/landslide.zip';
 		var shpfile = new L.Shapefile(base, {
-			onEachFeature:(feature, layer)=> {
-				
+			onEachFeature: (feature, layer) => {
+
 				// if (feature.properties) {
 				// 	layer.bindPopup(Object.keys(feature.properties).map(function(k) {
 				// 		// console.log(k + ": " +feature.properties[k])
@@ -44,24 +44,21 @@ export class MapComponent implements OnInit  {
 				// 		maxHeight: 200
 				// 	});
 				// }
-				layer.on('click',  (e) => {
+				layer.on('click', (e) => {
 					this.mapObject = e.target.feature.properties;
-					});
-				
+				});
+
 			}
-				
+
 		});
 		shpfile.addTo(this.map);
 		shpfile.once("data:loaded", function () {
 			console.log("finished loaded shapefile");
 		});
 
-
 	}
 
-
-
-
+	
 
 }
 

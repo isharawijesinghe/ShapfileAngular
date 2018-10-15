@@ -20,6 +20,7 @@ import { DialogComponent } from './common/dialog/dialog.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
 import { HeaderComponent } from './header/header.component';
 import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
+import { StaticWeatherChartComponent } from './static-weather-chart/static-weather-chart.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.compo
     DialogComponent,
     WeatherChartComponent,
     HeaderComponent,
-    DetailsSidebarComponent
+    DetailsSidebarComponent,
+    StaticWeatherChartComponent
   ],
   imports: [
     BrowserModule,

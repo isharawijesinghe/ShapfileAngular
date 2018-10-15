@@ -5,26 +5,36 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   templateUrl: './mapdetail.component.html',
   styleUrls: ['./mapdetail.component.css']
 })
-export class MapdetailComponent implements OnInit, OnChanges {
+export class MapdetailComponent implements OnInit {
   
  
-  @Input() mapObject : any
+
+  public _mapDetailObject : any
   private Data = [];
   private Val = [];
+
+  @Input() set mapDetailObject(value:any){
+      this._mapDetailObject = value;
+      console.log(this._mapDetailObject);
+      for (let key in this._mapDetailObject) {
+        this.Data.push(key);
+        this.Val.push(this._mapDetailObject[key])
+     }
+
+     this.Data=[];
+     this.Val=[];
+  
+  }
+
+  get mapDetailObject(): any {
+    return this._mapDetailObject;
+  }
 
   constructor() { }
 
   ngOnInit() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.mapObject)
-    var keys = Object.keys(changes.mapObject.currentValue)
-    for (let key in changes.mapObject.currentValue) {
-      this.Data.push(key);
-      this.Val.push(changes.mapObject.currentValue[key])
-   }
-
   }
 
 
-}
+

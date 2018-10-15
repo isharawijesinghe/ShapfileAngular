@@ -44,15 +44,19 @@ export class WeatherDetailComponent implements OnInit {
     let options = {
       latitude: this._selected_coord.lat,
       longitude: this._selected_coord.lng,
-      start_date:this.weatherForm.value.date_range[0],
-      end_date:this.weatherForm.value.date_range[1]
+      start_date: this.weatherForm.value.date_range[0],
+      end_date: this.weatherForm.value.date_range[1]
     }
 
     // this.weatherService.getWeatherData(options)
-    
-    this.weatherService.getRangeWeatherData(options)
 
-    // const dialogRef = this.dialog.open(WeatherChartComponent)
+    let rangeWeatherData = this.weatherService.getRangeWeatherData(options)
+
+    const dialogRef = this.dialog.open(WeatherChartComponent, {
+      height: '400px',
+      width: '600px',
+      data:rangeWeatherData
+    })
 
     // dialogRef.afterClosed().subscribe(result => {
 

@@ -37,7 +37,7 @@ import { WeatherChartComponent } from './weather-chart/weather-chart.component';
     MatDialogModule,
     ChartModule,
     CalendarModule,
-    TableModule
+    TableModule,
     ToggleButtonModule
   ],
   providers: [WeatherDetailService],

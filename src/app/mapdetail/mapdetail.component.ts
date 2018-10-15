@@ -16,6 +16,14 @@ export class MapdetailComponent implements OnInit {
   @Input() set mapDetailObject(value:any){
       this._mapDetailObject = value;
       console.log(this._mapDetailObject);
+      for (let key in this._mapDetailObject) {
+        this.Data.push(key);
+        this.Val.push(this._mapDetailObject[key])
+     }
+
+     this.Data=[];
+     this.Val=[];
+  
   }
 
   get mapDetailObject(): any {
@@ -25,13 +33,6 @@ export class MapdetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   console.log(this.mapObject)
-  //   for (let key in changes.mapObject.currentValue) {
-  //     this.Data.push(key);
-  //     this.Val.push(changes.mapObject.currentValue[key])
-  //  }
 
   }
 

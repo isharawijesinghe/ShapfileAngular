@@ -44,7 +44,9 @@ export class MapComponent implements OnInit {
 					console.log(e)
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
+					console.log(this.coordinateObject);
 					this.type = e.target.feature.geometry.type;
+					console.log(this.type);
 					});
 			}
 		});

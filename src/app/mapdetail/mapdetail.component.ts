@@ -30,9 +30,11 @@ export class MapdetailComponent implements OnInit {
 
   @Input() set mapCoordinateObject(value:any){
     this.mapCoordinateKeys=[];
+    console.log(this._mapCoordinateObject);
     for (let key in this._mapCoordinateObject) {
       this.mapCoordinateKeys.push(key);
    }
+   console.log(this.mapCoordinateKeys.length)
 }
 
 get mapCoordinateObject(): any {
@@ -42,6 +44,7 @@ get mapCoordinateObject(): any {
 
 @Input() set mapType(value:any){
   this._mapType = value;
+  console.log(this._mapType);
 }
 
 get mapType(): any {

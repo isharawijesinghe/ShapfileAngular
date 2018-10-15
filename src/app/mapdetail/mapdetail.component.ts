@@ -9,13 +9,21 @@ export class MapdetailComponent implements OnInit, OnChanges {
   
  
   @Input() mapObject : any
+  private Data = [];
+  private Val = [];
 
   constructor() { }
 
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes.mapObject.currentValue);
+    console.log(this.mapObject)
+    var keys = Object.keys(changes.mapObject.currentValue)
+    for (let key in changes.mapObject.currentValue) {
+      this.Data.push(key);
+      this.Val.push(changes.mapObject.currentValue[key])
+   }
+
   }
 
 

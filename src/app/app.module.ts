@@ -6,6 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ChartModule} from 'primeng/chart';
 import {CalendarModule} from 'primeng/calendar';
+import {TableModule} from 'primeng/table';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -34,7 +35,8 @@ import { WeatherChartComponent } from './weather-chart/weather-chart.component';
     BrowserAnimationsModule,
     MatDialogModule,
     ChartModule,
-    CalendarModule
+    CalendarModule,
+    TableModule
     
   ],
   providers: [WeatherDetailService],

@@ -20,8 +20,9 @@ import { DialogComponent } from './common/dialog/dialog.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
 import { HeaderComponent } from './header/header.component';
 import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
-import { StaticWeatherChartComponent } from './static-weather-chart/static-weather-chart.component';
 
+import { MapService } from './map/map.service';
+import { StaticWeatherChartComponent } from './static-weather-chart/static-weather-chart.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { StaticWeatherChartComponent } from './static-weather-chart/static-weath
     TableModule,
     ToggleButtonModule
   ],
-  providers: [WeatherDetailService],
+  providers: [WeatherDetailService, MapService],
   entryComponents:[DialogComponent,WeatherChartComponent],
   bootstrap: [AppComponent]
 })

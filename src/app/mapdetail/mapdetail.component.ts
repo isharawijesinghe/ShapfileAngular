@@ -10,20 +10,17 @@ export class MapdetailComponent implements OnInit {
  
 
   public _mapDetailObject : any
-  private Data = [];
-  private Val = [];
+   Data = [];
+   Val = [];
 
   @Input() set mapDetailObject(value:any){
+      this.Data=[];
+      this.Data=[];
       this._mapDetailObject = value;
       console.log(this._mapDetailObject);
       for (let key in this._mapDetailObject) {
         this.Data.push(key);
-        this.Val.push(this._mapDetailObject[key])
      }
-
-     this.Data=[];
-     this.Val=[];
-  
   }
 
   get mapDetailObject(): any {

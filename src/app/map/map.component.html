@@ -1,7 +1,16 @@
+<div class="p-grid p-dir">
+    <div class="p-col">
+        <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
+        <div style="margin-top: 20px" class="p-grid p-dir">
+            <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
+        </div>
+    </div>
 <div class="col-lg-3">
     <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
 </div>
 
+    <div class="p-col">
+        <div style=height:60% id="map" class=""></div>
 <div class="col-lg-3">
     
     <app-static-weather-chart></app-static-weather-chart>
@@ -12,5 +21,8 @@
     <div class="col-md-10">
         <div id="map" class=""></div>
     </div>
-    <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
+
+    <!-- <div class="p-col-2">
+        <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
+    </div> -->
 </div>

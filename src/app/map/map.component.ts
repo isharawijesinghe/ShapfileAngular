@@ -1,6 +1,7 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 declare let L;
+import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
 
 

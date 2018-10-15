@@ -1,4 +1,8 @@
-
-<div *ngFor="let prop of Data">
-   {{prop}} : {{_mapDetailObject[prop]}} 
- </div>
+<div class="container">
+    <table style="width:100%">
+        <tr *ngFor="let prop of Data">
+          <td>{{prop}}</td>
+          <td><span style=margin-left:30px>: {{_mapDetailObject[prop]}}</span></td>
+        </tr>
+    </table>
+</div>

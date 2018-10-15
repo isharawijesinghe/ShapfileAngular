@@ -20,6 +20,7 @@ import { DialogComponent } from './common/dialog/dialog.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
 import { HeaderComponent } from './header/header.component';
 import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
+import { MapService } from './map/map.service';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.compo
     TableModule,
     ToggleButtonModule
   ],
-  providers: [WeatherDetailService],
+  providers: [WeatherDetailService, MapService],
   entryComponents:[DialogComponent,WeatherChartComponent],
   bootstrap: [AppComponent]
 })

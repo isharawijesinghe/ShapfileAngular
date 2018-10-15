@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail.service';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../common/dialog/dialog.component';
@@ -13,22 +13,43 @@ import { WeatherChartComponent } from '../weather-chart/weather-chart.component'
 export class WeatherDetailComponent implements OnInit {
 
   private _selected_coord: any;
+  selectionMode: any[];
+  selectedMode: any;
+  weatherForm: FormGroup;
+  isRangeData = false;
+
   @Input('selected_coord')
   set selectedCoord(coord) {
     this._selected_coord = coord
-    this.patchCord(coord);
   }
+
+
   constructor(private fb: FormBuilder,
     private weatherService: WeatherDetailService,
-    public dialog: MatDialog) { }
-
-
-  weatherForm = this.fb.group({
-    date_range: [''],
-    coordinates: [{ value: '', disabled: true }, Validators.required]
-  })
+    public dialog: MatDialog) {
+  }
 
   ngOnInit() {
+    this.weatherService.weatherDataProcessed.subscribe(res => {
+      res = { ...res, isRange: this.isRangeData };
+      const dialogRef = this.dialog.open(WeatherChartComponent, {
+        height: '600px',
+        width: '1000px',
+        data: res,
+      })
+    })
+
+    this.weatherForm = this.fb.group({
+      date_range: [''],
+      coordinates: [{ value: '', disabled: true }, Validators.required],
+      isRange: false,
+      date: ['']
+    })
+    this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
+      this.isRangeData = value;
+    })
+
+    this.patchCord(this._selected_coord);
   }
 
 
@@ -38,30 +59,30 @@ export class WeatherDetailComponent implements OnInit {
     })
   }
 
-
   onSubmit() {
     // this.openDialog();
-    let options = {
-      latitude: this._selected_coord.lat,
-      longitude: this._selected_coord.lng,
-      start_date: this.weatherForm.value.date_range[0],
-      end_date: this.weatherForm.value.date_range[1]
+
+    if (this.isRangeData) {
+      let options = {
+        latitude: this._selected_coord.lat,
+        longitude: this._selected_coord.lng,
+        start_date: this.weatherForm.value.date_range[0],
+        end_date: this.weatherForm.value.date_range[1]
+      }
+
+      // this.weatherService.getWeatherData(options)
+
+      this.weatherService.getRangeWeatherData(options);
+    } else {
+      let options = {
+        latitude: this._selected_coord.lat,
+        longitude: this._selected_coord.lng,
+        date: this.weatherForm.value.date
+
+      }
+      this.weatherService.getWeatherData(options);
+
     }
-
-    // this.weatherService.getWeatherData(options)
-
-    let rangeWeatherData = this.weatherService.getRangeWeatherData(options)
-
-    const dialogRef = this.dialog.open(WeatherChartComponent, {
-      height: '400px',
-      width: '600px',
-      data:rangeWeatherData
-    })
-
-    // dialogRef.afterClosed().subscribe(result => {
-
-    // })
-    console.log(this.weatherForm.value)
   }
 
   openDialog() {

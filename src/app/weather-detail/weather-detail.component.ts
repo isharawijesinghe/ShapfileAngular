@@ -21,13 +21,21 @@ export class WeatherDetailComponent implements OnInit {
   @Input('selected_coord')
   set selectedCoord(coord) {
     this._selected_coord = coord
+    this.patchCord(this._selected_coord);
   }
 
 
   constructor(private fb: FormBuilder,
     private weatherService: WeatherDetailService,
     public dialog: MatDialog) {
+    this.weatherForm = this.fb.group({
+      date_range: [''],
+      coordinates: [{ value: '', disabled: true }, Validators.required],
+      isRange: false,
+      date: ['']
+    })
   }
+
 
   ngOnInit() {
     this.weatherService.weatherDataProcessed.subscribe(res => {
@@ -39,12 +47,6 @@ export class WeatherDetailComponent implements OnInit {
       })
     })
 
-    this.weatherForm = this.fb.group({
-      date_range: [''],
-      coordinates: [{ value: '', disabled: true }, Validators.required],
-      isRange: false,
-      date: ['']
-    })
     this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
       this.isRangeData = value;
     })

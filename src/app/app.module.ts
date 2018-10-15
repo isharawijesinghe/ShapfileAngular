@@ -20,7 +20,11 @@ import { DialogComponent } from './common/dialog/dialog.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
 import { HeaderComponent } from './header/header.component';
 import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
+<<<<<<< HEAD
 import { MapService } from './map/map.service';
+=======
+import { StaticWeatherChartComponent } from './static-weather-chart/static-weather-chart.component';
+>>>>>>> 183658bbe0593d74990ad8227b27b7f90e722b1b
 
 
 @NgModule({
@@ -32,7 +36,8 @@ import { MapService } from './map/map.service';
     DialogComponent,
     WeatherChartComponent,
     HeaderComponent,
-    DetailsSidebarComponent
+    DetailsSidebarComponent,
+    StaticWeatherChartComponent
   ],
   imports: [
     BrowserModule,

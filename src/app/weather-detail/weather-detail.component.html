@@ -3,8 +3,8 @@
 
     <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
         <label>
-            Date:
-            <input type="text" formControlName="date_range" daterangepicker [options]="options" (selected)="selectedDate($event, daterange)" />
+            Date Range:
+            <p-calendar formControlName="date_range" dateFormat="dd.mm.yy" selectionMode="range" showIcon=true></p-calendar>
         </label>
 
         <label>

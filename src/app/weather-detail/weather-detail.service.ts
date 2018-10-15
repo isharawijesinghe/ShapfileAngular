@@ -12,9 +12,18 @@ export class WeatherDetailService {
   getWeatherData(weather_options) {
     this.http.post('http://localhost:3001/weather', weather_options).toPromise().then(res => {
       console.log(res);
-    }).catch(error=>{
+    }).catch(error => {
       console.log(error);
-      
+
+    });
+  }
+
+  getRangeWeatherData(weather_options) {
+    this.http.post('http://localhost:3001/weatherRange', weather_options).toPromise().then(res => {
+      console.log(res);
+    }).catch(error => {
+      console.log(error);
+
     });
   }
 }

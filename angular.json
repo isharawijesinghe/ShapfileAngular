@@ -25,13 +25,16 @@
             "styles": [
               "src/styles.css",
               "src/assets/leaflet/leaflet.css",
-              "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css"
+              "./node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.css","node_modules/primeicons/primeicons.css",
+              "./node_modules/primeng/resources/themes/nova-light/theme.css",
+              "./node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
               "src/assets/leaflet/shp.js",
               "src/assets/leaflet/leaflet.js",
               "src/assets/leaflet/leaflet.shpfile.js",
-              "src/assets/leaflet/catiline.js"
+              "src/assets/leaflet/catiline.js",
+              "./node_modules/chart.js/dist/Chart.js"
             ]
           },
           "configurations": {
@@ -79,7 +82,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [],
             "assets": [

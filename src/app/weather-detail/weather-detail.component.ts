@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail.service';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../common/dialog/dialog.component';
+import { WeatherChartComponent } from '../weather-chart/weather-chart.component';
 
 @Component({
   selector: 'app-weather-detail',
@@ -39,12 +40,24 @@ export class WeatherDetailComponent implements OnInit {
 
 
   onSubmit() {
-    this.openDialog();
+    // this.openDialog();
     let options = {
       latitude: this._selected_coord.lat,
-      longitude: this._selected_coord.lng
+      longitude: this._selected_coord.lng,
+      start_date:this.weatherForm.value.date_range[0],
+      end_date:this.weatherForm.value.date_range[1]
     }
-    this.weatherService.getWeatherData(options)
+
+    // this.weatherService.getWeatherData(options)
+    
+    this.weatherService.getRangeWeatherData(options)
+
+    // const dialogRef = this.dialog.open(WeatherChartComponent)
+
+    // dialogRef.afterClosed().subscribe(result => {
+
+    // })
+    console.log(this.weatherForm.value)
   }
 
   openDialog() {
@@ -60,32 +73,6 @@ export class WeatherDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  }
-
-
-
-
-  public daterange: any = {};
-
-  // see original project for full list of options
-  // can also be setup using the config service to apply to multiple pickers
-  public options: any = {
-    locale: { format: 'YYYY-MM-DD' },
-    alwaysShowCalendars: false,
-  };
-
-  public selectedDate(value: any, datepicker?: any) {
-    // this is the date the iser selected
-    console.log(value);
-
-    // any object can be passed to the selected event and it will be passed back here
-    datepicker.start = value.start;
-    datepicker.end = value.end;
-
-    // or manupulat your own internal property
-    this.daterange.start = value.start;
-    this.daterange.end = value.end;
-    this.daterange.label = value.label;
   }
 
 }

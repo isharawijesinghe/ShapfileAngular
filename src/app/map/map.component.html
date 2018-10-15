@@ -1,13 +1,16 @@
 <div class="p-grid p-dir">
     <div class="p-col">
         <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
+        <div style="margin-top: 20px" class="p-grid p-dir">
+            <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
+        </div>
     </div>
 
     <div class="p-col">
-        <div id="map" class=""></div>
+        <div style=height:60% id="map" class=""></div>
     </div>
 
-    <div class="p-col">
+    <!-- <div class="p-col-2">
         <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
-    </div>
+    </div> -->
 </div>

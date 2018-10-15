@@ -6,8 +6,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
   styleUrls: ['./mapdetail.component.css']
 })
 export class MapdetailComponent implements OnInit {
-  
- 
+
+
 
   public _mapDetailObject : any
   public _mapCoordinateObject: any;

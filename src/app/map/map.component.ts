@@ -1,5 +1,6 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
+import { MapService } from './map.service.js';
 declare let L;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
@@ -10,14 +11,14 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 	templateUrl: './map.component.html',
 	styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit  {
+export class MapComponent implements OnInit {
 
     public mapObject:any;
 	private map: any;
 	public selectedCoordinates: any;
 	public coordinateObject:any;
 	public type:any;
-	constructor() {
+	constructor(private mapService: MapService) {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
 		}
@@ -36,9 +37,10 @@ export class MapComponent implements OnInit  {
 			this.selectedCoordinates = coord
 		})
 		var base = '../../assets/landslide.zip';
+		// var base = this.mapService.getMapData('landslide.zip');
 		var shpfile = new L.Shapefile(base, {
-			onEachFeature:(feature, layer)=> {
-				layer.on('click',  (e) => {
+			onEachFeature: (feature, layer) => {
+				layer.on('click', (e) => {
 					console.log(e)
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
@@ -51,12 +53,10 @@ export class MapComponent implements OnInit  {
 			console.log("finished loaded shapefile");
 		});
 
-
 	}
-
-
-
-
+	getData() {
+		this.mapService.getMapData('landslide.zip');
+	};
 
 }
 

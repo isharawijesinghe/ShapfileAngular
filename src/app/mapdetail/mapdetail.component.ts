@@ -10,22 +10,43 @@ export class MapdetailComponent implements OnInit {
  
 
   public _mapDetailObject : any
-   Data = [];
-   Val = [];
+  public _mapCoordinateObject: any;
+  public _mapType:any;
+  public mapDatailKeys = [];
+  public mapCoordinateKeys = [];
+  
 
   @Input() set mapDetailObject(value:any){
-      this.Data=[];
-      this.Data=[];
+      this.mapDatailKeys=[];
       this._mapDetailObject = value;
-      console.log(this._mapDetailObject);
       for (let key in this._mapDetailObject) {
-        this.Data.push(key);
+        this.mapDatailKeys.push(key);
      }
   }
 
   get mapDetailObject(): any {
     return this._mapDetailObject;
   }
+
+  @Input() set mapCoordinateObject(value:any){
+    this.mapCoordinateKeys=[];
+    for (let key in this._mapCoordinateObject) {
+      this.mapCoordinateKeys.push(key);
+   }
+}
+
+get mapCoordinateObject(): any {
+  return this._mapCoordinateObject;
+}
+
+
+@Input() set mapType(value:any){
+  this._mapType = value;
+}
+
+get mapType(): any {
+return this._mapType;
+}
 
   constructor() { }
 

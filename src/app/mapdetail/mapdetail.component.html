@@ -1,4 +1,8 @@
 
-<div *ngFor="let prop of Data">
+ Map Type : {{_mapType}}
+ Lattitude : {{_mapCoordinateObject['lat']}}
+ Lattitude : {{_mapCoordinateObject['lng']}}
+
+<div *ngFor="let prop of mapDatailKeys">
    {{prop}} : {{_mapDetailObject[prop]}} 
  </div>

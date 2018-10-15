@@ -12,9 +12,11 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 })
 export class MapComponent implements OnInit  {
 
-    mapObject:any;
+    public mapObject:any;
 	private map: any;
-	selectedCoordinates: any;
+	public selectedCoordinates: any;
+	public coordinateObject:any;
+	public type:any;
 	constructor() {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
@@ -36,21 +38,13 @@ export class MapComponent implements OnInit  {
 		var base = '../../assets/landslide.zip';
 		var shpfile = new L.Shapefile(base, {
 			onEachFeature:(feature, layer)=> {
-
-				// if (feature.properties) {
-				// 	layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-				// 		// console.log(k + ": " +feature.properties[k])
-				// 		return k + ": " + feature.properties[k];
-				// 	}).join("<br />"), {
-				// 		maxHeight: 200
-				// 	});
-				// }
 				layer.on('click',  (e) => {
+					console.log(e)
 					this.mapObject = e.target.feature.properties;
+					this.coordinateObject = e.latlng;
+					this.type = e.target.feature.geometry.type;
 					});
-
 			}
-
 		});
 		shpfile.addTo(this.map);
 		shpfile.once("data:loaded", function () {

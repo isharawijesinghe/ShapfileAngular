@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail/weather-detail.service';
 import { DialogComponent } from './common/dialog/dialog.component';
 import { WeatherChartComponent } from './weather-chart/weather-chart.component';
+import { HeaderComponent } from './header/header.component';
+import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { WeatherChartComponent } from './weather-chart/weather-chart.component';
     WeatherDetailComponent,
     MapdetailComponent,
     DialogComponent,
-    WeatherChartComponent
+    WeatherChartComponent,
+    HeaderComponent,
+    DetailsSidebarComponent
   ],
   imports: [
     BrowserModule,

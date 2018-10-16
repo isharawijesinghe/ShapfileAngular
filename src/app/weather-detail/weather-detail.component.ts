@@ -18,6 +18,7 @@ export class WeatherDetailComponent implements OnInit {
   selectedMode: any;
   weatherForm: FormGroup;
   isRangeData = false;
+  weatherDataResponse: any;
 
   @Input('selected_coord')
   set selectedCoord(coord) {
@@ -35,6 +36,8 @@ export class WeatherDetailComponent implements OnInit {
       isRange: false,
       date: ['']
     })
+
+    this.weatherDataResponse = { isLoaded: false }
   }
 
   ngOnInit() {
@@ -46,12 +49,22 @@ export class WeatherDetailComponent implements OnInit {
     //     data: res,
     //   })
     // })
+    let options = {
+      latitude: 6.7056,
+      longitude: 80.3847,
+      date: new Date()
+
+    }
+
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse = { ...res, isRange: false, isLoaded: true }
+    });
 
     this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
       this.isRangeData = value;
     })
 
-    this.patchCord(this._selected_coord);
+    // this.patchCord(this._selected_coord);
   }
 
 
@@ -74,7 +87,9 @@ export class WeatherDetailComponent implements OnInit {
 
       // this.weatherService.getWeatherData(options)
 
-      this.weatherService.getRangeWeatherData(options);
+      this.weatherService.getRangeWeatherData(options).toPromise().then(res => {
+        this.weatherDataResponse = { ...res, isRange: true, isLoaded: true }
+      });
     } else {
       let options = {
         latitude: this._selected_coord.lat,
@@ -83,8 +98,10 @@ export class WeatherDetailComponent implements OnInit {
 
       }
 
-      this.weatherService.getWeatherData(options);
-      this.eventsService.asyncRequestSent.emit(true);
+      this.weatherService.getWeatherData(options).toPromise().then(res => {
+        this.weatherDataResponse = { ...res, isRange: true, isLoaded: true }
+      });
+      // this.eventsService.asyncRequestSent.emit(true);
 
     }
   }

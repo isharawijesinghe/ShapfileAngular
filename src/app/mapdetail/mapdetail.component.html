@@ -1,8 +1,6 @@
-<!-- <div>{{_mapCoordinateObject['lat']}}</div>
-<div>{{_mapCoordinateObject['lng']}}</div>
-<div>{{[mapType]}}</div> -->
+<div *ngIf="isClick">{{_mapCoordinateObject['lat']}}</div>
+<div *ngIf="isClick">{{_mapCoordinateObject['lng']}}</div>
 <p-table [value]="mapDatailKeys" [scrollable]="true" scrollHeight="200px" [resizableColumns]="true">
-
   <ng-template pTemplate="header">
       <tr>
           <th>Feature</th>

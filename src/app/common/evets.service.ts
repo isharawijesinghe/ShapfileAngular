@@ -4,7 +4,7 @@ import { EventEmitter, Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class EventsService {
-    asyncRequestSent: EventEmitter<any> = new EventEmitter();
+    // asyncRequestSent: EventEmitter<any> = new EventEmitter();
 
 
 }

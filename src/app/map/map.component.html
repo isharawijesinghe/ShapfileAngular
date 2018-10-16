@@ -9,9 +9,11 @@
         <button (click)="getData()">Test zip</button>
       </div>
 
-      <div class="p-col">
-        <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
-      </div>
+          <div class="p-col">
+            <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'
+            [mapType]='type'></app-mapdetail>
+          </div>
+        </div>
     </div>
   </div>
 
@@ -32,6 +34,5 @@
       </label>
     </form>
 
-  </div>
 
-</div>
+<button (click)="getData()">Test zip</button>

@@ -1,6 +1,6 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
-import { MapService } from './map.service';
+import { MapService } from './map.service'
 declare let L;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
@@ -13,9 +13,11 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 })
 export class MapComponent implements OnInit {
 
-	mapObject: any;
+    public mapObject:any;
 	private map: any;
-	selectedCoordinates: any;
+	public selectedCoordinates: any;
+	public coordinateObject:any;
+	public type:any;
 	weatherDataResponse1 = {};
 	weatherDataResponse2 = {};
 	weatherDataResponse3 = {};
@@ -29,6 +31,7 @@ export class MapComponent implements OnInit {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
 		}
+	}
 
 		this.weatherDataResponses = [this.weatherDataResponse1, this.weatherDataResponse2, this.weatherDataResponse3]
 
@@ -53,21 +56,12 @@ export class MapComponent implements OnInit {
 		// var base = this.mapService.getMapData('landslide.zip');
 		var shpfile = new L.Shapefile(base, {
 			onEachFeature: (feature, layer) => {
-
-				// if (feature.properties) {
-				// 	layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-				// 		// console.log(k + ": " +feature.properties[k])
-				// 		return k + ": " + feature.properties[k];
-				// 	}).join("<br />"), {
-				// 		maxHeight: 200
-				// 	});
-				// }
 				layer.on('click', (e) => {
 					this.mapObject = e.target.feature.properties;
-				});
-
+					this.coordinateObject = e.latlng;
+					this.type = e.target.feature.geometry.type;
+					});
 			}
-
 		});
 		shpfile.addTo(this.map);
 		shpfile.once("data:loaded", function () {

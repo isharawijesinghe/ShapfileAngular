@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare let L;
-import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js';
-import { HeaderComponent } from './header/header.component';
-import { DetailsSidebarComponent } from './details-sidebar/details-sidebar.component';
-import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
+import '../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 
 
 
@@ -23,4 +20,5 @@ export class AppComponent implements OnInit {
 
 	constructor() {}
 
-	ngOnInit() {}}
+	ngOnInit() {}
+}

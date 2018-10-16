@@ -10,16 +10,20 @@ export class MapdetailComponent implements OnInit {
 
 
   public _mapDetailObject : any
-   Data = [];
-   Val = [];
+  public _mapCoordinateObject: any;
+  public _mapType:any;
+  public mapDatailKeys = [];
+  
+ 
+  constructor() {}
 
-  @Input() set mapDetailObject(value:any){
-      this.Data=[];
-      this.Data=[];
-      this._mapDetailObject = value;
-      console.log(this._mapDetailObject);
+  ngOnInit() {}
+
+  @Input() set mapDetailObject(mapObject:any){
+      this.mapDatailKeys=[];
+      this._mapDetailObject = mapObject;
       for (let key in this._mapDetailObject) {
-        this.Data.push(key);
+        this.mapDatailKeys.push(key);
      }
   }
 
@@ -27,11 +31,23 @@ export class MapdetailComponent implements OnInit {
     return this._mapDetailObject;
   }
 
-  constructor() { }
+  @Input() set mapCoordinateObject(coordinateObject:any){
+    this._mapCoordinateObject = coordinateObject;
+}
 
-  ngOnInit() {}
+get mapCoordinateObject(): any {
+  return this._mapCoordinateObject;
+}
 
-  }
+
+@Input() set mapType(mapType:any){
+  this._mapType = mapType;
+}
+
+get mapType(): any {
+return this._mapType;
+}
+}
 
 
 

@@ -4,7 +4,7 @@
       <span style="font-weight: bold">Latitude</span>
     </td>
     <td>
-      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lat']}}</div>
+      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lat'] | number : '1.2-2'}}</div>
     </td>
   </tr>
 
@@ -14,7 +14,7 @@
     </td>
 
     <td>
-      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lng']}}</div>
+      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lng'] | number : '1.2-2'}}</div>
     </td>
   </tr>
 </table>

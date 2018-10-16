@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Optional } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { WeatherDetailService } from './weather-detail.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogComponent } from '../common/dialog/dialog.component';
 import { WeatherChartComponent } from '../weather-chart/weather-chart.component';
 import { EventsService } from '../common/evets.service';
@@ -18,6 +18,7 @@ export class WeatherDetailComponent implements OnInit {
   selectedMode: any;
   weatherForm: FormGroup;
   isRangeData = false;
+  weatherDataResponse: any;
 
   @Input('selected_coord')
   set selectedCoord(coord) {
@@ -25,7 +26,9 @@ export class WeatherDetailComponent implements OnInit {
     this.patchCord(this._selected_coord);
   }
 
-  constructor(private fb: FormBuilder,
+  constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private fb: FormBuilder,
     private weatherService: WeatherDetailService,
     public dialog: MatDialog,
     private eventsService: EventsService) {
@@ -35,6 +38,8 @@ export class WeatherDetailComponent implements OnInit {
       isRange: false,
       date: ['']
     })
+
+    this.weatherDataResponse = { isLoaded: false }
   }
 
   ngOnInit() {
@@ -46,12 +51,22 @@ export class WeatherDetailComponent implements OnInit {
     //     data: res,
     //   })
     // })
+    let options = {
+      latitude: 6.7056,
+      longitude: 80.3847,
+      date: new Date()
+
+    }
+
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse = { ...res, isRange: false, isLoaded: true }
+    });
 
     this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
       this.isRangeData = value;
     })
 
-    this.patchCord(this._selected_coord);
+    // this.patchCord(this._selected_coord);
   }
 
 
@@ -63,7 +78,7 @@ export class WeatherDetailComponent implements OnInit {
 
   onSubmit() {
     // this.openDialog();
-
+    this.weatherDataResponse = { isLoaded: false }
     if (this.isRangeData) {
       let options = {
         latitude: this._selected_coord.lat,
@@ -74,7 +89,9 @@ export class WeatherDetailComponent implements OnInit {
 
       // this.weatherService.getWeatherData(options)
 
-      this.weatherService.getRangeWeatherData(options);
+      this.weatherService.getRangeWeatherData(options).toPromise().then(res => {
+        this.weatherDataResponse = { ...res, isRange: true, isLoaded: true }
+      });
     } else {
       let options = {
         latitude: this._selected_coord.lat,
@@ -83,8 +100,10 @@ export class WeatherDetailComponent implements OnInit {
 
       }
 
-      this.weatherService.getWeatherData(options);
-      this.eventsService.asyncRequestSent.emit(true);
+      this.weatherService.getWeatherData(options).toPromise().then(res => {
+        this.weatherDataResponse = { ...res, isRange: false, isLoaded: true }
+      });
+      // this.eventsService.asyncRequestSent.emit(true);
 
     }
   }

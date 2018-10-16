@@ -1,8 +1,25 @@
+<table>
+  <tr>
+    <td *ngIf="isClick">
+      <span style="font-weight: bold">Latitude</span>
+    </td>
+    <td>
+      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lat'] | number : '1.2-2'}}</div>
+    </td>
+  </tr>
 
-<div *ngIf="isClick">{{_mapCoordinateObject['lat']}}</div>
-<div *ngIf="isClick">{{_mapCoordinateObject['lng']}}</div>
-<p-table [value]="mapDatailKeys">
-    
+  <tr>
+    <td *ngIf="isClick">
+      <span style="font-weight: bold">Longitude</span>
+    </td>
+
+    <td>
+      <div style="margin-left: 5px" *ngIf="isClick">:  {{_mapCoordinateObject['lng'] | number : '1.2-2'}}</div>
+    </td>
+  </tr>
+</table>
+
+<p-table [value]="mapDatailKeys" [scrollable]="true" scrollHeight="200px" [resizableColumns]="true">
   <ng-template pTemplate="header">
       <tr>
           <th>Feature</th>

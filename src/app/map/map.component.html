@@ -1,37 +1,43 @@
 <div class="p-grid p-dir">
   <div class="p-col">
-    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
+
 
     <div style="margin-top: 20px" class="p-grid p-dir">
+      <!--<div class="p-col">-->
+        <!--&lt;!&ndash; <app-static-weather-chart></app-static-weather-chart> &ndash;&gt;-->
+        <!--&lt;!&ndash; <app-static-weather-chart [response]="weatherDataResponse"></app-static-weather-chart> &ndash;&gt;-->
+        <!--<button (click)="getData()">Test zip</button>-->
+      <!--</div>-->
       <div class="p-col">
-        <!-- <app-static-weather-chart></app-static-weather-chart> -->
-        <!-- <app-static-weather-chart [response]="weatherDataResponse"></app-static-weather-chart> -->
-        <button (click)="getData()">Test zip</button>
+        <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
       </div>
 
-          <div class="p-col">
-            <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
-          </div>
-        </div>
+      <div class="p-col">
+        <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
+      </div>
+
+      <div class="p-col">
+        <div style="height:40%" id="map" class=""></div>
+        <form>
+          <label>
+            Landslides:
+            <p-inputSwitch (onChange)="landslideChange($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
+          </label>
+          <label>
+            Land Use:
+            <p-inputSwitch (onChange)="landuseChange($event)"></p-inputSwitch>
+          </label>
+          <label>
+            Geology:
+            <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch>
+          </label>
+        </form>
+
+
+        <button (click)="getData()">Test zip</button>
+      </div>
+    </div>
     </div>
   </div>
 
-  <div class="p-col">
-    <div style=height:60% id="map" class=""></div>
-    <form>
-      <label>
-        Landslides:
-        <p-inputSwitch (onChange)="landslideChange($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
-      </label>
-      <label>
-        Land Use:
-        <p-inputSwitch (onChange)="landuseChange($event)"></p-inputSwitch>
-      </label>
-      <label>
-        Geology:
-        <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch>
-      </label>
-    </form>
 
-
-<button (click)="getData()">Test zip</button>

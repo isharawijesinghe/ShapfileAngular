@@ -8,8 +8,8 @@ import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -50,8 +50,9 @@ import { EventsService } from './common/evets.service';
     CalendarModule,
     TableModule,
     ToggleButtonModule,
-    MatProgressSpinnerModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ProgressSpinnerModule
+
   ],
   providers: [WeatherDetailService, MapService,EventsService],
   entryComponents: [DialogComponent, WeatherChartComponent],

@@ -14,27 +14,33 @@ export class MapdetailComponent implements OnInit {
   public _mapType:any;
   public mapDatailKeys = [];
   public mapCoordinateKeys = [];
-  
+ 
+  constructor() {}
 
-  @Input() set mapDetailObject(value:any){
+  ngOnInit() {}
+
+  @Input() set mapDetailObject(mapObject:any){
       this.mapDatailKeys=[];
-      this._mapDetailObject = value;
+      this._mapDetailObject = mapObject;
+      console.log(this._mapDetailObject);
       for (let key in this._mapDetailObject) {
         this.mapDatailKeys.push(key);
      }
+     console.log(this.mapDatailKeys.length);
   }
 
   get mapDetailObject(): any {
     return this._mapDetailObject;
   }
 
-  @Input() set mapCoordinateObject(value:any){
+  @Input() set mapCoordinateObject(coordinateObject:any){
     this.mapCoordinateKeys=[];
+    this._mapDetailObject = coordinateObject;
     console.log(this._mapCoordinateObject);
     for (let key in this._mapCoordinateObject) {
       this.mapCoordinateKeys.push(key);
    }
-   console.log(this.mapCoordinateKeys.length)
+   console.log(this.mapCoordinateKeys.length);
 }
 
 get mapCoordinateObject(): any {
@@ -42,20 +48,15 @@ get mapCoordinateObject(): any {
 }
 
 
-@Input() set mapType(value:any){
-  this._mapType = value;
+@Input() set mapType(mapType:any){
+  this._mapType = mapType;
   console.log(this._mapType);
 }
 
 get mapType(): any {
 return this._mapType;
 }
-
-  constructor() { }
-
-  ngOnInit() {}
-
-  }
+}
 
 
 

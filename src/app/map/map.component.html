@@ -8,7 +8,8 @@
           </div>
 
           <div class="p-col">
-            <app-mapdetail [mapDetailObject]='mapObject'></app-mapdetail>
+            <app-mapdetail [mapDetailObject]='mapObject'  [mapCoordinateObject]='coordinateObject'
+            [mapType]='type'></app-mapdetail>
           </div>
         </div>
     </div>
@@ -17,12 +18,6 @@
         <div style=height:60% id="map" class=""></div>
     </div>
 </div>
-<div>
-    <app-mapdetail [mapDetailObject]='mapObject'
-     [mapCoordinateObject] ='coordinateObject'
-     [mapType] = 'type' >
 
-    </app-mapdetail>
-</div>
 
 <button (click)="getData()">Test zip</button>

@@ -59,7 +59,7 @@ export class MapComponent implements OnInit {
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
 				});
-				this.map.fitBounds(layer.getBounds(), {maxZoom: 13});
+				this.map.fitBounds(layer.getBounds(), {maxZoom: 11});
 			}
 		});
 		shpfile.addTo(this.map);

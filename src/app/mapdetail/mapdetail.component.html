@@ -1,8 +1,8 @@
 <!-- <div>{{_mapCoordinateObject['lat']}}</div>
 <div>{{_mapCoordinateObject['lng']}}</div>
 <div>{{[mapType]}}</div> -->
-<p-table [value]="mapDatailKeys">
-    
+<p-table [value]="mapDatailKeys" [scrollable]="true" scrollHeight="200px" [resizableColumns]="true">
+
   <ng-template pTemplate="header">
       <tr>
           <th>Feature</th>

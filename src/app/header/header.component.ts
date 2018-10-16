@@ -35,24 +35,53 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getFirstChart();
+    this.getSecondChart();
+    this.getThirdChart();
+    this.getFourthChart();
     // this.getWeatherData();
   }
 
 
-  getWeatherData() {
-
-    for (let i = 0; i < 4; i++) {
-      let options = {
-        latitude: this.coordinates[i].lat,
-        longitude: this.coordinates[i].lng,
-        date: new Date()
-      }
-      this.weatherService.getWeatherData(options).toPromise().then(res => {
-        this.weatherDataResponses[i] = { ...res, isRange: false, isLoaded: true };
-      });
+  getFirstChart() {
+    let options = {
+      latitude: this.coordinates[0].lat,
+      longitude: this.coordinates[0].lng,
+      date: new Date()
     }
-
-
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse1 = { ...res, isRange: false, isLoaded: true };
+    });
+  }
+  getSecondChart() {
+    let options = {
+      latitude: this.coordinates[1].lat,
+      longitude: this.coordinates[1].lng,
+      date: new Date()
+    }
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse2 = { ...res, isRange: false, isLoaded: true };
+    });
+  }
+  getThirdChart() {
+    let options = {
+      latitude: this.coordinates[2].lat,
+      longitude: this.coordinates[2].lng,
+      date: new Date()
+    }
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse3 = { ...res, isRange: false, isLoaded: true };
+    });
+  }
+  getFourthChart() {
+    let options = {
+      latitude: this.coordinates[3].lat,
+      longitude: this.coordinates[3].lng,
+      date: new Date()
+    }
+    this.weatherService.getWeatherData(options).toPromise().then(res => {
+      this.weatherDataResponse4 = { ...res, isRange: false, isLoaded: true };
+    });
   }
 
 }

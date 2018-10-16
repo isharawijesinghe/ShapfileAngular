@@ -1,6 +1,6 @@
-<div>{{_mapCoordinateObject['lat']}}</div>
-<div>{{_mapCoordinateObject['lng']}}</div>
-<div>{{[mapType]}}</div>
+
+<div *ngIf="isClick">{{_mapCoordinateObject['lat']}}</div>
+<div *ngIf="isClick">{{_mapCoordinateObject['lng']}}</div>
 <p-table [value]="mapDatailKeys">
     
   <ng-template pTemplate="header">

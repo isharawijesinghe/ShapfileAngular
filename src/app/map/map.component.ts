@@ -17,7 +17,6 @@ export class MapComponent implements OnInit {
 	private map: any;
 	public selectedCoordinates: any;
 	public coordinateObject:any;
-	public type:any;
 	constructor(private mapService: MapService) {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
@@ -41,9 +40,9 @@ export class MapComponent implements OnInit {
 		var shpfile = new L.Shapefile(base, {
 			onEachFeature: (feature, layer) => {
 				layer.on('click', (e) => {
+					console.log(e);
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
-					this.type = e.target.feature.geometry.type;
 					});
 			}
 		});

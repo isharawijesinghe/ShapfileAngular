@@ -9,45 +9,42 @@ export class MapdetailComponent implements OnInit {
 
 
 
-  public _mapDetailObject : any
+  public _mapDetailObject: any
   public _mapCoordinateObject: any;
-  public _mapType:any;
   public mapDatailKeys = [];
-  
- 
-  constructor() {}
+  public isClick:boolean =false;
 
-  ngOnInit() {}
+  constructor() { }
 
-  @Input() set mapDetailObject(mapObject:any){
-      this.mapDatailKeys=[];
-      this._mapDetailObject = mapObject;
+  ngOnInit() { }
+
+  @Input() set mapDetailObject(mapObject: any) {
+    this.mapDatailKeys = [];
+    this._mapDetailObject = mapObject;
+    console.log(this._mapDetailObject)
+    if(this._mapDetailObject){
       for (let key in this._mapDetailObject) {
         this.mapDatailKeys.push(key);
-     }
+      }
+  }
+   
   }
 
   get mapDetailObject(): any {
     return this._mapDetailObject;
   }
 
-  @Input() set mapCoordinateObject(coordinateObject:any){
+  @Input() set mapCoordinateObject(coordinateObject: any) {
     this._mapCoordinateObject = coordinateObject;
+    if(this._mapCoordinateObject){
+      console.log(this.isClick);
+      this.isClick = true;
+      this._mapCoordinateObject = coordinateObject;
+     }
+   }
+  get mapCoordinateObject(): any {
+    return this._mapCoordinateObject;
+  }
+
 }
-
-get mapCoordinateObject(): any {
-  return this._mapCoordinateObject;
-}
-
-
-@Input() set mapType(mapType:any){
-  this._mapType = mapType;
-}
-
-get mapType(): any {
-return this._mapType;
-}
-}
-
-
 

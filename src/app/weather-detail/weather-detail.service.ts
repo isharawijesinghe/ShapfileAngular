@@ -16,13 +16,16 @@ export class WeatherDetailService {
   }
 
   getRangeWeatherData(weather_options) {
-    this.http.post('http://localhost:3001/weatherRange', weather_options).toPromise().then(res => {
-      console.log(res);
-      this.weatherDataProcessed.emit({ ...res, isRange: true })
-      // return res;
-    }).catch(error => {
-      console.log(error);
+    // this.http.post('http://localhost:3001/weatherRange', weather_options).toPromise().then(res => {
+    //   console.log(res);
+    //   this.weatherDataProcessed.emit({ ...res, isRange: true })
+    //   // return res;
+    // }).catch(error => {
+    //   console.log(error);
 
-    });
+    // });
+
+    return this.http.post('http://localhost:3001/weatherRange', weather_options);
+
   }
 }

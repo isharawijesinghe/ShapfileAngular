@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherDetailService } from '../weather-detail/weather-detail.service';
+import { EventsService } from '../common/evets.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   weatherDataResponses: any[];
   coordinates: { lat: number, lng: number }[];
 
-  constructor(private weatherService: WeatherDetailService) {
+  constructor(private weatherService: WeatherDetailService,
+    private eventsService: EventsService) {
     this.weatherDataResponse1 = { isLoaded: false }
     this.weatherDataResponse2 = { isLoaded: false }
     this.weatherDataResponse3 = { isLoaded: false }
@@ -35,6 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.eventsService.asyncRequestSent.emit(true);
     this.getFirstChart();
     this.getSecondChart();
     this.getThirdChart();

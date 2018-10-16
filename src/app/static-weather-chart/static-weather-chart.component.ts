@@ -40,10 +40,9 @@ export class StaticWeatherChartComponent implements OnInit {
     //   this.isDataLoaded = true;
     // })
 
-    this.eventsService.asyncRequestSent.subscribe(res => {
-      this.isAsyncReqSent = res;
-    })
-
+    // this.eventsService.asyncRequestSent.subscribe(res => {
+    //   this.isAsyncReqSent = res;
+    // })
 
   }
 
@@ -51,6 +50,7 @@ export class StaticWeatherChartComponent implements OnInit {
     this.isAsyncReqSent = false;
     this.isRange = res.isRange;
     this.retrived_response = res;
+    this.isDataLoaded = res.isLoaded;
     if (this.isRange) {
       this.weatherData = res.weather;
       this.dates = res.dates;

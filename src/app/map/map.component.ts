@@ -4,8 +4,6 @@ import { MapService } from './map.service'
 declare let L;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
-
-
 @Component({
 	selector: 'app-map',
 	templateUrl: './map.component.html',
@@ -13,11 +11,11 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 })
 export class MapComponent implements OnInit {
 
-    public mapObject:any;
+	public mapObject: any;
 	private map: any;
 	public selectedCoordinates: any;
-	public coordinateObject:any;
-	public type:any;
+	public coordinateObject: any;
+	public type: any;
 	weatherDataResponse1 = {};
 	weatherDataResponse2 = {};
 	weatherDataResponse3 = {};
@@ -31,12 +29,13 @@ export class MapComponent implements OnInit {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
 		}
-	}
-
-		this.weatherDataResponses = [this.weatherDataResponse1, this.weatherDataResponse2, this.weatherDataResponse3]
-
+		// this.weatherDataResponses = [this.weatherDataResponse1, this.weatherDataResponse2, this.weatherDataResponse3]
 
 	}
+
+
+
+
 
 	ngOnInit() {
 
@@ -60,7 +59,7 @@ export class MapComponent implements OnInit {
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
 					this.type = e.target.feature.geometry.type;
-					});
+				});
 			}
 		});
 		shpfile.addTo(this.map);
@@ -90,5 +89,3 @@ export class MapComponent implements OnInit {
 	}
 
 }
-
-

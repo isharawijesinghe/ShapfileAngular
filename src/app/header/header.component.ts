@@ -7,25 +7,52 @@ import { WeatherDetailService } from '../weather-detail/weather-detail.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  weatherDataResponse: any;
+  weatherDataResponse1: any;
+  weatherDataResponse2: any;
+  weatherDataResponse3: any;
+  weatherDataResponse4: any;
+  weatherDataResponses: any[];
+  coordinates: { lat: number, lng: number }[];
+
   constructor(private weatherService: WeatherDetailService) {
-    this.weatherDataResponse = { isLoaded: false }
+    this.weatherDataResponse1 = { isLoaded: false }
+    this.weatherDataResponse2 = { isLoaded: false }
+    this.weatherDataResponse3 = { isLoaded: false }
+    this.weatherDataResponse4 = { isLoaded: false }
+    this.weatherDataResponses = [
+      this.weatherDataResponse1,
+      this.weatherDataResponse2,
+      this.weatherDataResponse3,
+      this.weatherDataResponse4
+    ]
+
+    this.coordinates = [
+      { lat: 6.9934, lng: 81.0550 },
+      { lat: 6.9497, lng: 80.7891 },
+      { lat: 7.4675, lng: 80.6234 },
+      { lat: 6.7056, lng: 80.3847 }
+    ]
   }
 
   ngOnInit() {
-    this.getWeatherData();
+    // this.getWeatherData();
   }
 
 
   getWeatherData() {
-    let options = {
-      latitude: 6.5626371894890445,
-      longitude: 80.38146972656251,
-      date: new Date()
+
+    for (let i = 0; i < 4; i++) {
+      let options = {
+        latitude: this.coordinates[i].lat,
+        longitude: this.coordinates[i].lng,
+        date: new Date()
+      }
+      this.weatherService.getWeatherData(options).toPromise().then(res => {
+        this.weatherDataResponses[i] = { ...res, isRange: false, isLoaded: true };
+      });
     }
-    this.weatherService.getWeatherData(options).toPromise().then(res => {
-      this.weatherDataResponse = { ...res, isRange: false, isLoaded: true };
-    });
+
+
   }
 
 }

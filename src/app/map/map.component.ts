@@ -1,6 +1,6 @@
 import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
-import { MapService } from './map.service.js';
+import { MapService } from './map.service'
 declare let L;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
@@ -44,7 +44,6 @@ export class MapComponent implements OnInit {
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
 					this.type = e.target.feature.geometry.type;
-					
 					});
 			}
 		});

@@ -13,7 +13,7 @@ export class MapdetailComponent implements OnInit {
   public _mapCoordinateObject: any;
   public _mapType:any;
   public mapDatailKeys = [];
-  public mapCoordinateKeys = [];
+  
  
   constructor() {}
 
@@ -22,11 +22,9 @@ export class MapdetailComponent implements OnInit {
   @Input() set mapDetailObject(mapObject:any){
       this.mapDatailKeys=[];
       this._mapDetailObject = mapObject;
-      console.log(this._mapDetailObject);
       for (let key in this._mapDetailObject) {
         this.mapDatailKeys.push(key);
      }
-     console.log(this.mapDatailKeys.length);
   }
 
   get mapDetailObject(): any {
@@ -34,13 +32,7 @@ export class MapdetailComponent implements OnInit {
   }
 
   @Input() set mapCoordinateObject(coordinateObject:any){
-    this.mapCoordinateKeys=[];
-    this._mapDetailObject = coordinateObject;
-    console.log(this._mapCoordinateObject);
-    for (let key in this._mapCoordinateObject) {
-      this.mapCoordinateKeys.push(key);
-   }
-   console.log(this.mapCoordinateKeys.length);
+    this._mapCoordinateObject = coordinateObject;
 }
 
 get mapCoordinateObject(): any {
@@ -50,7 +42,6 @@ get mapCoordinateObject(): any {
 
 @Input() set mapType(mapType:any){
   this._mapType = mapType;
-  console.log(this._mapType);
 }
 
 get mapType(): any {

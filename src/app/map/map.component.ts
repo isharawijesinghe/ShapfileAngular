@@ -15,7 +15,6 @@ export class MapComponent implements OnInit {
 	private map: any;
 	public selectedCoordinates: any;
 	public coordinateObject: any;
-	public type: any;
 	weatherDataResponse1 = {};
 	weatherDataResponse2 = {};
 	weatherDataResponse3 = {};
@@ -56,9 +55,9 @@ export class MapComponent implements OnInit {
 		var shpfile = new L.Shapefile(base, {
 			onEachFeature: (feature, layer) => {
 				layer.on('click', (e) => {
+					console.log(e);
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
-					this.type = e.target.feature.geometry.type;
 				});
 			}
 		});

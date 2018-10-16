@@ -3,6 +3,7 @@ import { WeatherDetailService } from '../weather-detail/weather-detail.service';
 import { MatDialog } from '@angular/material';
 import { WeatherChartComponent } from '../weather-chart/weather-chart.component';
 import { EventsService } from '../common/evets.service';
+import { WeatherDetailComponent } from '../weather-detail/weather-detail.component';
 
 @Component({
   selector: 'app-static-weather-chart',
@@ -16,6 +17,8 @@ export class StaticWeatherChartComponent implements OnInit {
     if (res) {
       if (res.isLoaded == true) {
         this.generateTemplate(res)
+      } else {
+        this.isDataLoaded = res.isLoaded;
       }
     }
   }
@@ -27,6 +30,7 @@ export class StaticWeatherChartComponent implements OnInit {
   retrived_response: any;
   isAsyncReqSent = false;
   isDataLoaded = false;
+  @Input() isHeaderView = false;
   constructor(private weatherService: WeatherDetailService,
     private eventsService: EventsService,
     public dialog: MatDialog) {
@@ -50,7 +54,7 @@ export class StaticWeatherChartComponent implements OnInit {
     this.isAsyncReqSent = false;
     this.isRange = res.isRange;
     this.retrived_response = res;
-    this.isDataLoaded = res.isLoaded;
+    this.isDataLoaded = true;
     if (this.isRange) {
       this.weatherData = res.weather;
       this.dates = res.dates;
@@ -110,6 +114,13 @@ export class StaticWeatherChartComponent implements OnInit {
       height: '600px',
       width: '1000px',
       data: this.retrived_response,
+    })
+  }
+
+  openWeatherOptions() {
+    const dialogRef = this.dialog.open(WeatherDetailComponent, {
+      height: '400px',
+      width: '400'
     })
   }
 }

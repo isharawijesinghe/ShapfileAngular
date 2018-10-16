@@ -13,26 +13,29 @@
             <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'
             [mapType]='type'></app-mapdetail>
           </div>
-        </div>
+
+      <div class="p-col">
+        <div style="height:60%" id="map" class=""></div>
+        <form>
+          <label>
+            Landslides:
+            <p-inputSwitch (onChange)="landslideChange($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
+          </label>
+          <label>
+            Land Use:
+            <p-inputSwitch (onChange)="landuseChange($event)"></p-inputSwitch>
+          </label>
+          <label>
+            Geology:
+            <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch>
+          </label>
+        </form>
+
+
+        <button (click)="getData()">Test zip</button>
+      </div>
+    </div>
     </div>
   </div>
 
-  <div class="p-col">
-    <div style=height:60% id="map" class=""></div>
-    <form>
-      <label>
-        Landslides:
-        <p-inputSwitch (onChange)="landslideChange($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
-      </label>
-      <label>
-        Land Use:
-        <p-inputSwitch (onChange)="landuseChange($event)"></p-inputSwitch>
-      </label>
-      <label>
-        Geology:
-        <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch>
-      </label>
-    </form>
 
-
-<button (click)="getData()">Test zip</button>

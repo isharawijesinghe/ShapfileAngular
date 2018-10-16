@@ -74,7 +74,9 @@ export class StaticWeatherChartComponent implements OnInit {
         {
           label: 'Hourly Rainfall',
           data: rainfallIntensities,
-          borderColor: '#4bc0c0'
+          borderColor: '#2f98b7',
+          backgroundColor: '#4ec2e5',
+          fontColor: 'white'
         }
       ]
     }

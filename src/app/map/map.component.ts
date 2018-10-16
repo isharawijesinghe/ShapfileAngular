@@ -59,9 +59,11 @@ export class MapComponent implements OnInit {
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
 				});
+				this.map.fitBounds(layer.getBounds(), {maxZoom: 13});
 			}
 		});
 		shpfile.addTo(this.map);
+		
 		shpfile.once("data:loaded", function () {
 			console.log("finished loaded shapefile");
 		});

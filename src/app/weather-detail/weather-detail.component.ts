@@ -4,6 +4,7 @@ import { WeatherDetailService } from './weather-detail.service';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../common/dialog/dialog.component';
 import { WeatherChartComponent } from '../weather-chart/weather-chart.component';
+import { EventsService } from '../common/evets.service';
 
 @Component({
   selector: 'app-weather-detail',
@@ -26,7 +27,8 @@ export class WeatherDetailComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private weatherService: WeatherDetailService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private eventsService: EventsService) {
     this.weatherForm = this.fb.group({
       date_range: [''],
       coordinates: [{ value: '', disabled: true }, Validators.required],
@@ -80,7 +82,9 @@ export class WeatherDetailComponent implements OnInit {
         date: this.weatherForm.value.date
 
       }
+
       this.weatherService.getWeatherData(options);
+      this.eventsService.asyncRequestSent.emit(true);
 
     }
   }

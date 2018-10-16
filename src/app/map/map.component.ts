@@ -4,8 +4,6 @@ import { MapService } from './map.service'
 declare let L;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
-
-
 @Component({
 	selector: 'app-map',
 	templateUrl: './map.component.html',
@@ -13,17 +11,34 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 })
 export class MapComponent implements OnInit {
 
-    public mapObject:any;
+	public mapObject: any;
 	private map: any;
 	public selectedCoordinates: any;
-	public coordinateObject:any;
+	public coordinateObject: any;
+	weatherDataResponse1 = {};
+	weatherDataResponse2 = {};
+	weatherDataResponse3 = {};
+
+	weatherDataResponses: any[];
+
+	default_coordinates: { lat: number, lng: number }[];
+
+	checked = false;
 	constructor(private mapService: MapService) {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
 		}
+		// this.weatherDataResponses = [this.weatherDataResponse1, this.weatherDataResponse2, this.weatherDataResponse3]
+
 	}
 
+
+
+
+
 	ngOnInit() {
+
+		this.loadDefaultWeatherDataRequests();
 
 		this.map = L.map('map').setView([6.5626371894890445, 80.38146972656251], 10);
 		// http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png
@@ -43,7 +58,7 @@ export class MapComponent implements OnInit {
 					console.log(e);
 					this.mapObject = e.target.feature.properties;
 					this.coordinateObject = e.latlng;
-					});
+				});
 			}
 		});
 		shpfile.addTo(this.map);
@@ -56,6 +71,20 @@ export class MapComponent implements OnInit {
 		this.mapService.getMapData('landslide.zip');
 	};
 
+	landslideChange(event) {
+		this.checked = !event.checked;
+	}
+
+	landuseChange(event) {
+
+	}
+
+	geologyChange(event) {
+
+	}
+
+	loadDefaultWeatherDataRequests() {
+
+	}
+
 }
-
-

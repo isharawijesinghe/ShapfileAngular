@@ -1,2 +1,14 @@
-<button class="btn" (click)="openDialogChart()"><i class="fa fa-home"></i></button>
-<p-chart type="line" [data]="chartData"></p-chart>
+
+
+<button class="btn" (click)="openDialogChart()" [disabled]="!isDataLoaded"></button>
+
+<div>
+    <div *ngIf="isAsyncReqSent; else chart">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <ng-template #chart>
+        <p-chart type="line" [data]="chartData"></p-chart>
+    </ng-template>
+
+</div>

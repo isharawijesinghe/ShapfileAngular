@@ -13,16 +13,31 @@ import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.comp
 })
 export class MapComponent implements OnInit {
 
-  mapObject: any;
+	mapObject: any;
 	private map: any;
 	selectedCoordinates: any;
+	weatherDataResponse1 = {};
+	weatherDataResponse2 = {};
+	weatherDataResponse3 = {};
+
+	weatherDataResponses: any[];
+
+	default_coordinates: { lat: number, lng: number }[];
+
+	checked = false;
 	constructor(private mapService: MapService) {
 		this.selectedCoordinates = {
 			lat: 6.5626371894890445, lng: 80.38146972656251
 		}
-  }
+
+		this.weatherDataResponses = [this.weatherDataResponse1, this.weatherDataResponse2, this.weatherDataResponse3]
+
+
+	}
 
 	ngOnInit() {
+
+		this.loadDefaultWeatherDataRequests();
 
 		this.map = L.map('map').setView([6.5626371894890445, 80.38146972656251], 10);
 		// http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png
@@ -48,7 +63,7 @@ export class MapComponent implements OnInit {
 				// 	});
 				// }
 				layer.on('click', (e) => {
-          this.mapObject = e.target.feature.properties;
+					this.mapObject = e.target.feature.properties;
 				});
 
 			}
@@ -61,8 +76,24 @@ export class MapComponent implements OnInit {
 
 	}
 	getData() {
-    this.mapService.getMapData('landslide.zip');
+		this.mapService.getMapData('landslide.zip');
 	};
+
+	landslideChange(event) {
+		this.checked = !event.checked;
+	}
+
+	landuseChange(event) {
+
+	}
+
+	geologyChange(event) {
+
+	}
+
+	loadDefaultWeatherDataRequests() {
+
+	}
 
 }
 

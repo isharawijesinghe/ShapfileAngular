@@ -3,8 +3,8 @@
 <button class="btn" (click)="openDialogChart()" [disabled]="!isDataLoaded"></button>
 
 <div>
-    <div *ngIf="!isDataLoaded; else chart">
-        <mat-spinner></mat-spinner>
+    <div style="margin-left: 90px" *ngIf="!isDataLoaded; else chart">
+        <p-progressSpinner></p-progressSpinner>
     </div>
 
     <ng-template #chart>

@@ -10,6 +10,7 @@ import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -51,7 +52,8 @@ import { EventsService } from './common/evets.service';
     TableModule,
     ToggleButtonModule,
     InputSwitchModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    MatSlideToggleModule
 
   ],
   providers: [WeatherDetailService, MapService,EventsService],

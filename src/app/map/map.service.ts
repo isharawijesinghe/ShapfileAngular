@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class MapService {
   // weatherDataProcessed: EventEmitter<any> = new EventEmitter();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getMapData(filename) {
     this.http
@@ -19,5 +19,10 @@ export class MapService {
       .catch(error => {
         console.log(error);
       });
+  }
+
+
+  getMockData(filename) {
+    return '../../assets/mock-db/' + filename + '.zip'
   }
 }

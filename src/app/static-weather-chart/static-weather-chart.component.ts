@@ -66,7 +66,7 @@ export class StaticWeatherChartComponent implements OnInit {
   }
 
   processSingleChart() {
-    const labels = Array(23).fill(0).map((e, i) => i + 1)
+    const labels = Array(23).fill(-1).map((e, i) => i + 1)
     const rainfallIntensities = [];
     this.weatherData.forEach(element => {
       rainfallIntensities.push(element.precipIntensity)

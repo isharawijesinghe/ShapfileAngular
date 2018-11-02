@@ -1,4 +1,8 @@
-<button class="btn" (click)="openDialogChart()" [disabled]="!isDataLoaded"></button>
+<button class="btn" (click)="openDialogChart()" [disabled]="!isDataLoaded">
+    <fa-icon [icon]="faCoffee"></fa-icon>
+    <!-- Download SVGPerfect for when you want to use just one icon as a vector on the desktop or in your own icon workflow. -->
+    <!-- <i class="fas fa-search-plus"></i> -->
+</button>
 
 <div>
     <div style="margin-left: 90px" *ngIf="!isDataLoaded; else chart">

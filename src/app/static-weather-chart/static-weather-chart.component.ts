@@ -5,6 +5,8 @@ import { WeatherChartComponent } from '../weather-chart/weather-chart.component'
 import { EventsService } from '../common/evets.service';
 import { WeatherDetailComponent } from '../weather-detail/weather-detail.component';
 
+import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-static-weather-chart',
   templateUrl: './static-weather-chart.component.html',
@@ -30,6 +32,7 @@ export class StaticWeatherChartComponent implements OnInit {
   retrived_response: any;
   isAsyncReqSent = false;
   isDataLoaded = false;
+  faCoffee = faSearchPlus;
   @Input() isHeaderView = false;
   constructor(private weatherService: WeatherDetailService,
     private eventsService: EventsService,

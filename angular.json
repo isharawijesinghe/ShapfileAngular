@@ -34,7 +34,8 @@
               "src/assets/leaflet/leaflet.js",
               "src/assets/leaflet/leaflet.shpfile.js",
               "src/assets/leaflet/catiline.js",
-              "./node_modules/chart.js/dist/Chart.js"
+              "./node_modules/chart.js/dist/Chart.js",
+              "./node_modules/leaflet-virtual-grid/dist/virtual-grid.js"
             ]
           },
           "configurations": {

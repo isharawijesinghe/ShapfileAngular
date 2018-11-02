@@ -8,9 +8,10 @@ import { ChartModule } from 'primeng/chart';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import {InputSwitchModule} from 'primeng/inputswitch';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { SidebarModule } from 'primeng/sidebar';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -28,6 +29,8 @@ import { MapService } from './map/map.service';
 import { StaticWeatherChartComponent } from './static-weather-chart/static-weather-chart.component';
 import { EventsService } from './common/evets.service';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,7 @@ import { EventsService } from './common/evets.service';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule ,
+    FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
     ChartModule,
@@ -53,10 +56,11 @@ import { EventsService } from './common/evets.service';
     ToggleButtonModule,
     InputSwitchModule,
     ProgressSpinnerModule,
-    MatSlideToggleModule
-
+    MatSlideToggleModule,
+    SidebarModule,
+    FontAwesomeModule
   ],
-  providers: [WeatherDetailService, MapService,EventsService],
+  providers: [WeatherDetailService, MapService, EventsService],
   entryComponents: [DialogComponent, WeatherChartComponent],
   bootstrap: [AppComponent]
 })

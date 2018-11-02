@@ -1,7 +1,7 @@
 <div class="p-grid p-dir">
   <div class="p-col">
 
-
+    <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
     <div style="margin-top: 20px" class="p-grid p-dir">
       <!--<div class="p-col">-->
       <!--&lt;!&ndash; <app-static-weather-chart></app-static-weather-chart> &ndash;&gt;-->
@@ -12,12 +12,12 @@
         <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
       </div>
 
-      <div class="p-col">
-        <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
-      </div>
+      <!-- <div class="p-col">
+          <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
+        </div> -->
 
       <div class="p-col">
-        <div style="height:40%" id="map" class=""></div>
+        <div style="height:40%" id="map"></div>
         <form>
           <label>
             Landslides:

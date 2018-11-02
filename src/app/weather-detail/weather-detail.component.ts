@@ -35,7 +35,7 @@ export class WeatherDetailComponent implements OnInit {
     this.weatherForm = this.fb.group({
       date_range: [''],
       coordinates: [{ value: '', disabled: true }, Validators.required],
-      isRange: false,
+      // isRange: false,
       date: ['']
     })
 
@@ -62,17 +62,19 @@ export class WeatherDetailComponent implements OnInit {
       this.weatherDataResponse = { ...res, isRange: false, isLoaded: true }
     });
 
-    this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
-      this.isRangeData = value;
-    })
+    // this.weatherForm.controls['isRange'].valueChanges.subscribe(value => {
+    //   this.isRangeData = value;
+    // })
 
     // this.patchCord(this._selected_coord);
   }
 
-
+  changeRetrivalOption(event) {
+    this.isRangeData = event.checked;
+  }
   private patchCord(coord: any) {
     this.weatherForm.patchValue({
-      coordinates: coord.lat + " , " + coord.lng
+      coordinates: 'Lat: ' + coord.lat.toFixed(3) + " , Lng: " + coord.lng.toFixed(3)
     })
   }
 

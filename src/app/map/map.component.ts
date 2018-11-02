@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
 	ngOnInit() {
 
 		this.loadDefaultWeatherDataRequests();
-
+		// var vg = new VirtualGrid();
 		this.map = L.map('map').setView([6.5626371894890445, 80.38146972656251], 10);
 		// http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png
 		// http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg

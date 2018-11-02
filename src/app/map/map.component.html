@@ -13,8 +13,8 @@
       </div>
 
       <!-- <div class="p-col">
-          <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
-        </div> -->
+        <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
+      </div>
 
       <div class="p-col">
         <div style="height:40%" id="map"></div>
@@ -25,24 +25,25 @@
             <mat-slide-toggle (change)="landslideChange($event)" [checked]="checked_landslide" [disabled]="isFetchingShapeFile">
 
             </mat-slide-toggle>
-            <!-- <p-inputSwitch (onChange)="landslideChange($event)" [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch> -->
+          
           </label>
           <label>
             Land Use:
             <mat-slide-toggle (change)="landuseChange($event)" [disabled]="isFetchingShapeFile">
 
-            </mat-slide-toggle> <!-- <p-inputSwitch (onChange)="landuseChange($event)"></p-inputSwitch> -->
+            </mat-slide-toggle> 
           </label>
           <label>
             Geology:
             <mat-slide-toggle (change)="geologyChange($event)" [disabled]="isFetchingShapeFile">
 
-            </mat-slide-toggle> <!-- <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch> -->
-          </label>
-        </form>
+            </mat-slide-toggle> <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch> --> 
+          <!-- </label>
+        </form> -->
 
         <!--  <button (click)="getData()">Test zip</button> -->
-      </div>
+      <!-- </div> -->
+      <iframe src="http://editor.giscloud.com/rest/1/maps/934814/render.iframe?bound=8937839.045156855,725138.9780843928,8963942.290316243,735171.3380468227&toolbar=true&popups=true&layerlist=true" width="600" height="400" frameborder="0"></iframe>
     </div>
   </div>
 </div>

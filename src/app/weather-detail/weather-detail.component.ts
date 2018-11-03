@@ -34,7 +34,7 @@ export class WeatherDetailComponent implements OnInit {
     private eventsService: EventsService) {
     this.weatherForm = this.fb.group({
       date_range: [''],
-      coordinates: [{ value: '', disabled: true }, Validators.required],
+      coordinates: [{ value: ''}, Validators.required],
       // isRange: false,
       date: ['']
     })
@@ -80,6 +80,8 @@ export class WeatherDetailComponent implements OnInit {
 
   onSubmit() {
     // this.openDialog();
+    console.log("submitted");
+    
     this.weatherDataResponse = { isLoaded: false }
     if (this.isRangeData) {
       let options = {

@@ -1,18 +1,14 @@
 <div class="p-grid p-dir">
-  <div class="p-col">
+  <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
+  <div style="margin-top: 20px" class="p-grid p-dir">
+    <!--<div class="p-col">-->
+    <!--&lt;!&ndash; <app-static-weather-chart></app-static-weather-chart> &ndash;&gt;-->
+    <!--&lt;!&ndash; <app-static-weather-chart [response]="weatherDataResponse"></app-static-weather-chart> &ndash;&gt;-->
+    <!--<button (click)="getData()">Test zip</button>-->
+    <!--</div>-->
 
-    <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
-    <div style="margin-top: 20px" class="p-grid p-dir">
-      <!--<div class="p-col">-->
-      <!--&lt;!&ndash; <app-static-weather-chart></app-static-weather-chart> &ndash;&gt;-->
-      <!--&lt;!&ndash; <app-static-weather-chart [response]="weatherDataResponse"></app-static-weather-chart> &ndash;&gt;-->
-      <!--<button (click)="getData()">Test zip</button>-->
-      <!--</div>-->
-      <div class="p-col">
-        <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
-      </div>
 
-      <!-- <div class="p-col">
+    <!-- <div class="p-col">
         <app-mapdetail [mapDetailObject]='mapObject' [mapCoordinateObject]='coordinateObject'></app-mapdetail>
       </div>
 
@@ -37,13 +33,36 @@
             Geology:
             <mat-slide-toggle (change)="geologyChange($event)" [disabled]="isFetchingShapeFile">
 
-            </mat-slide-toggle> <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch> --> 
-          <!-- </label>
+            </mat-slide-toggle> <p-inputSwitch (onChange)="geologyChange($event)"></p-inputSwitch> -->
+    <!-- </label>
         </form> -->
 
-        <!--  <button (click)="getData()">Test zip</button> -->
-      <!-- </div> -->
-      <iframe src="http://editor.giscloud.com/rest/1/maps/934814/render.iframe?bound=8937839.045156855,725138.9780843928,8963942.290316243,735171.3380468227&toolbar=true&popups=true&layerlist=true" width="600" height="400" frameborder="0"></iframe>
+    <!--  <button (click)="getData()">Test zip</button> -->
+    <!-- </div> -->
+    <div class="p-col-12">
+
+
+      <!-- <div id='mapViewer' style='border: 1px solid #C5C5C5; width: 600px; height: 400px'></div> -->
+
+
+
+      <iframe src="http://editor.giscloud.com/rest/1/maps/935482/render.iframe?bound=8925093.170690302,720533.6471302137,8977299.661009077,740598.3670550697&toolbar=true&popups=true&layerlist=true"
+        width="1000" height="400" frameborder="0"></iframe>
     </div>
+
+    <!-- <div class="p-col-4">
+  
+    </div> -->
+
+  </div>
+
+</div>
+
+<div class="p-grid p-dir">
+  <div class="p-col-4">
+    <div style="width:100%;height:100%" id="map"></div>
+  </div>
+  <div class="p-col-8">
+    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
   </div>
 </div>

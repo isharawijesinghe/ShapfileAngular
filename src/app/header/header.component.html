@@ -1,7 +1,7 @@
 <div class="p-grid p-dir" style="margin-left: 15px; margin-top:20px">
   <div class="p-col graph-box" >
     <app-static-weather-chart [response]="weatherDataResponse1"></app-static-weather-chart>
-    <label>Rathnapura</label>
+    <label>{{selected_coord}}</label>
   </div>
   <div class="p-col graph-box">
     <app-static-weather-chart [response]="weatherDataResponse2"></app-static-weather-chart>

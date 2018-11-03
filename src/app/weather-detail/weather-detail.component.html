@@ -1,43 +1,50 @@
-<div class="p-grid">
+<div class="p-grid p-dir">
+    <div class="p-col-6">
 
-    <div class="p-col">
         <div class="container">
-            <h4>Weather Data</h4>
+            <!-- <h4>Weather Data</h4> -->
 
             <mat-slide-toggle (change)="changeRetrivalOption($event)"></mat-slide-toggle>
-            <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
+
+            <div>
+                <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
 
 
-                <!-- <p-toggleButton onLabel="Range" offLabel="Default" formControlName="isRange"></p-toggleButton> -->
-                <div *ngIf="isRangeData; else range">
+                    <!-- <p-toggleButton onLabel="Range" offLabel="Default" formControlName="isRange"></p-toggleButton> -->
+                    <div *ngIf="isRangeData; else range">
+                        <label>
+                            Date Range:
+                            <p-calendar formControlName="date_range" dateFormat="dd.mm.yy" selectionMode="range"
+                                showIcon=true></p-calendar>
+                        </label>
+                    </div>
+
+                    <ng-template #range>
+                        <label>
+                            Date:
+                            <p-calendar formControlName="date" dateFormat="dd.mm.yy" showIcon=true monthNavigator=true
+                                yearNavigator=true></p-calendar>
+                        </label>
+                    </ng-template>
+
+
                     <label>
-                        Date Range:
-                        <p-calendar formControlName="date_range" dateFormat="dd.mm.yy" selectionMode="range" showIcon=true></p-calendar>
+                        Coordinates:
+                        <input readonly type="text" id="coord" formControlName="coordinates">
                     </label>
-                </div>
 
-                <ng-template #range>
-                    <label>
-                        Date:
-                        <p-calendar formControlName="date" dateFormat="dd.mm.yy" showIcon=true monthNavigator=true
-                            yearNavigator=true></p-calendar>
-                    </label>
-                </ng-template>
+                    <div>
+                        <button class="btn" type="submit" >Get Data</button>
+                    </div>
 
 
-                <label>
-                    Coordinates:
-                    <input type="text" id="coord" formControlName="coordinates" required>
-                </label>
-                <div>
-                    <button type="submit" type="button" class="btn btn-dark" [disabled]="!weatherForm.valid">Get Data</button>
-                </div>
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
-    <div class="p-col">
+    <div class="p-col-6">
         <app-static-weather-chart [response]="weatherDataResponse"></app-static-weather-chart>
     </div>
 

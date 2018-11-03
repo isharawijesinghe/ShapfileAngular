@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import '../../../node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.js'
 import { MapService } from './map.service'
 declare let L;
+declare let giscloud;
 import { DetailsSidebarComponent } from '../details-sidebar/details-sidebar.component';
 
 @Component({
@@ -38,6 +39,16 @@ export class MapComponent implements OnInit {
 
 
 	ngOnInit() {
+		// giscloud.ready(function () {
+		// 	var mapId = 284,
+		// 		b = new giscloud.Bounds(-11564616.631434001, -4696291.01784122, 15165106.411778938, 4970241.32721529),
+		// 		viewer = new giscloud.Viewer('mapViewer', mapId).bounds(b);
+		// });
+
+		// giscloud.ready(function () {
+		// 	var mapId = 284,
+		// 		viewer = new giscloud.Viewer('mapViewer', mapId);
+		// });
 
 		this.loadDefaultWeatherDataRequests();
 		// var vg = new VirtualGrid();

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   weatherDataResponse3: any;
   weatherDataResponse4: any;
   weatherDataResponses: any[];
+  selected_coord: string;
   coordinates: { lat: number, lng: number }[];
 
   constructor(private weatherService: WeatherDetailService,
@@ -34,6 +35,8 @@ export class HeaderComponent implements OnInit {
       { lat: 7.4675, lng: 80.6234 },
       { lat: 6.7056, lng: 80.3847 }
     ]
+
+    this.selected_coord = "Rathnapura"
   }
 
   ngOnInit() {

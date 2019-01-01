@@ -1,10 +1,18 @@
 .p-col.graph-box{
   margin-left: 2px;
   border: 2px solid #cfd1d1;
-  background-color: #939696;
+  background-color: #e1e1e1;
   width: 320px;
 }
 
 div label{
   /*margin-left: 50%;*/
+}
+
+label {
+  cursor: pointer;
+  color: #555;
+  display: block;
+  padding: 10px;
+  margin: 3px;
 }

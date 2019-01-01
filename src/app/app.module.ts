@@ -12,6 +12,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SidebarModule } from 'primeng/sidebar';
+import {FieldsetModule} from 'primeng/fieldset';
 
 import { AppComponent } from './app.component';
 import { WeatherDetailComponent } from './weather-detail/weather-detail.component';
@@ -58,7 +59,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProgressSpinnerModule,
     MatSlideToggleModule,
     SidebarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FieldsetModule
   ],
   providers: [WeatherDetailService, MapService, EventsService],
   entryComponents: [DialogComponent, WeatherChartComponent],

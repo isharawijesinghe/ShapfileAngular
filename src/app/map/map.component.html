@@ -45,9 +45,10 @@
       <!-- <div id='mapViewer' style='border: 1px solid #C5C5C5; width: 600px; height: 400px'></div> -->
 
 
-
-      <iframe src="http://editor.giscloud.com/rest/1/maps/935482/render.iframe?bound=8925093.170690302,720533.6471302137,8977299.661009077,740598.3670550697&toolbar=true&popups=true&layerlist=true"
-        width="1000" height="400" frameborder="0"></iframe>
+      <p-fieldset legend="Landslide Conditioning Factors" [toggleable]="true">
+        <iframe src="http://editor.giscloud.com/rest/1/maps/935482/render.iframe?bound=8925093.170690302,720533.6471302137,8977299.661009077,740598.3670550697&toolbar=true&popups=true&layerlist=true"
+          width="1000" height="400" frameborder="0"></iframe>
+      </p-fieldset>
     </div>
 
     <!-- <div class="p-col-4">
@@ -57,12 +58,13 @@
   </div>
 
 </div>
-
-<div class="p-grid p-dir">
-  <div class="p-col-4">
-    <div style="width:100%;height:100%" id="map"></div>
+<p-fieldset legend="Weather Details" [toggleable]="true">
+  <div class="p-grid p-dir">
+    <div class="p-col-4">
+      <div style="width:100%;height:100%" id="map"></div>
+    </div>
+    <div class="p-col-8">
+      <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
+    </div>
   </div>
-  <div class="p-col-8">
-    <app-weather-detail [selected_coord]="selectedCoordinates"></app-weather-detail>
-  </div>
-</div>
+</p-fieldset>

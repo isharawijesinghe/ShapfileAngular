@@ -69,7 +69,7 @@ export class StaticWeatherChartComponent implements OnInit {
   }
 
   processSingleChart() {
-    const labels = Array(23).fill(-1).map((e, i) => i + 1)
+    const labels = Array(24).fill(-1).map((e, i) => i + 1)
     const rainfallIntensities = [];
     this.weatherData.forEach(element => {
       rainfallIntensities.push(element.precipIntensity)
@@ -83,7 +83,7 @@ export class StaticWeatherChartComponent implements OnInit {
           data: rainfallIntensities,
           borderColor: '#2f98b7',
           backgroundColor: '#4ec2e5',
-          fontColor: 'white'
+          fontColor: 'black'
         }
       ]
     }
